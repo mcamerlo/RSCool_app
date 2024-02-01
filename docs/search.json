@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "j3.1_linguagem.html",
+    "href": "j3.1_linguagem.html",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "O assignment operator (&lt;-) é a ferramenta chave para a criação de objetos R.\nExemplos de criação de variáveis:\n\nvar_numeric &lt;- c(2.5  ,3.5 ,6.5  , -3.5, 0 , 7.7) \n\nvar_integer &lt;- c(2    ,3    ,6   , -3,   2,   9)\n\nvar_factor &lt;- factor (c(\"alto\",\"baixo\",\"baixo\", \"alto\", \"alto\", \"baixo\"))\n\nvar_character &lt;- c(\"João\",\"Rute\",\"Pedro\", \"Filipa\", \"Ana\", \"Fatima\")\n\nvar_log &lt;- c(TRUE,TRUE,TRUE,FALSE,FALSE,TRUE)\n\nvar_integerNA &lt;- c(2    ,3    ,NA   , -3, NA, NA)\n\n\nExemplos de criação de uma dataframe:\n\nDF &lt;- data.frame (var_character,var_numeric,var_integer,var_factor,var_log,var_integerNA)\n\n\n\n\n\n\n\n\nVectores numeric\n\nvar_numeric\n\n[1]  2.5  3.5  6.5 -3.5  0.0  7.7\n\n\n\nVectores integer\n\nvar_integer\n\n[1]  2  3  6 -3  2  9\n\n\n\nVectores factor\n\nvar_factor\n\n[1] alto  baixo baixo alto  alto  baixo\nLevels: alto baixo\n\n\n\nVectores character\n\nvar_character\n\n[1] \"João\"   \"Rute\"   \"Pedro\"  \"Filipa\" \"Ana\"    \"Fatima\"\n\n\n\nVectores lógico\n\nvar_log\n\n[1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE\n\n\n\n\n\n\n\nDF\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\n\n\n\n\n\n\ntable (var_factor)\n\nvar_factor\n alto baixo \n    3     3 \n\n\n\n\n\n\n\nplot (var_numeric)\n\n\n\n\n \n\n\n\n\n\n\n\nOperador\nDescrição\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^ or **\nexponentiation\n\n\nx %/% y\ninteger division 5%/%2 is 2\n\n\n\n\n\n\n\n\n\n\n\nOperador\nDescrição\n\n\n\n\n&lt;\nless than\n\n\n&lt;=\nless than or equal to\n\n\n&gt;\ngreater than\n\n\n&gt;=\ngreater than or equal to\n\n\n==\nexactly equal to\n\n\n!=\nnot equal to\n\n\n!x\nNot x\n\n\nx\ny\n\n\nx & y\nx E y\n\n\nis.na(x)\ntestar se x tem NAs\n\n\n%in%\n“a %in% c(a, b, c)”: Is a in the group c(a, b, c)?\n\n\n\n” %in% is the only operator that does not do normal element-wise execution. %in% tests whether the value(s) on the left side are in the vector on the right side.” (Ver Grolemund 2014: 81)   \n\n\n\n\n\nc(): combinar ou concatenar\n\n\nc  (25  , 33  ,  30  , 42  ,  26  ,  28) \n\n[1] 25 33 30 42 26 28\n\n\n\n\nseq(): sequênciar\n\n\nseq (1,6)\n\n[1] 1 2 3 4 5 6\n\n\n\n\nrep(): replicar \n\n\nrep (2017, 6)    # replicar 2017 6 vezes     \n\n[1] 2017 2017 2017 2017 2017 2017\n\n\n\n\nOutras funções comuns\n\n\n\n\n\n\n\n\nFunção\nDescrição\n\n\n\n\nseq(from , to, by)\ngenerate a sequence\n\n\nrep(x, ntimes)\nrepeat x n times\n\n\ncut(x, n)\ndivide continuous variable in factor with n levels\n\n\nsort (x)\nordenar\n\n\nlength (x)\nextensão\n\n\n\ncbind(objeto1, objeto2, …) # combina objetos como colunas\nrbind(objeto1, objeto2, …) # combina objetos como linhas\n\n\n\n\n\n\nlength(DF$var_numeric)\n\n[1] 6\n\nsum(DF$var_numeric)\n\n[1] 16.7\n\nmean (DF$var_numeric)\n\n[1] 2.783333\n\nmedian(DF$var_numeric)\n\n[1] 3\n\nsort  (DF$var_numeric)  \n\n[1] -3.5  0.0  2.5  3.5  6.5  7.7\n\ntable (DF$var_factor)\n\n\n alto baixo \n    3     3 \n\n\n\nclass (DF$var_numeric)\n\n[1] \"numeric\"\n\nclass (DF$var_integer)\n\n[1] \"numeric\"\n\nclass ( DF$var_factor)\n\n[1] \"factor\"\n\nclass ( DF$var_character)\n\n[1] \"character\"\n\n\n\n\n\n\n\n\nis.na(DF$var_integerNA)\n\n[1] FALSE FALSE  TRUE FALSE  TRUE  TRUE\n\n!is.na(DF$var_integerNA)\n\n[1]  TRUE  TRUE FALSE  TRUE FALSE FALSE\n\n\n\ntable (is.na(DF$var_integerNA) )\n\n\nFALSE  TRUE \n    3     3 \n\ntable (DF$var_integerNA, exclude = FALSE)\n\n\n  -3    2    3 &lt;NA&gt; \n   1    1    1    3 \n\n\n\n\n\n\n\n\nDF$var_num\n\n[1]  2.5  3.5  6.5 -3.5  0.0  7.7\n\nDF$var_num [1]   \n\n[1] 2.5\n\nDF$var_num [4]  \n\n[1] -3.5\n\nDF$var_num [1:3]\n\n[1] 2.5 3.5 6.5\n\nDF$var_num [2:5]\n\n[1]  3.5  6.5 -3.5  0.0\n\nDF$var_num [4:1]\n\n[1] -3.5  6.5  3.5  2.5\n\nDF$var_num [-1]      # indice negativo\n\n[1]  3.5  6.5 -3.5  0.0  7.7\n\nDF$var_num [20]  # fora do rango\n\n[1] NA\n\n\n\n\n\n\n\n\nclass (DF)     # classe de objeto      \n\n[1] \"data.frame\"\n\nnrow (DF)    # numero de linhas  \n\n[1] 6\n\nncol (DF)    # numero de colunas  \n\n[1] 6\n\ndim(DF)      # dimensão (linhas & colunas)   \n\n[1] 6 6\n\nobject.size(DF) # tamanho em bytes\n\n2472 bytes\n\nnames (DF)  # nome das variáveis \n\n[1] \"var_character\" \"var_numeric\"   \"var_integer\"   \"var_factor\"   \n[5] \"var_log\"       \"var_integerNA\"\n\nhead (DF)    # Primeiras 6 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nhead (DF, 13)  # Primeiras 13 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\ntail (DF)      # últimas 6 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\ntail (DF, 10)    # últimas 10 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nsummary(DF)     # sommario de cada variável da base\n\n var_character       var_numeric      var_integer     var_factor\n Length:6           Min.   :-3.500   Min.   :-3.000   alto :3   \n Class :character   1st Qu.: 0.625   1st Qu.: 2.000   baixo:3   \n Mode  :character   Median : 3.000   Median : 2.500             \n                    Mean   : 2.783   Mean   : 3.167             \n                    3rd Qu.: 5.750   3rd Qu.: 5.250             \n                    Max.   : 7.700   Max.   : 9.000             \n                                                                \n  var_log        var_integerNA    \n Mode :logical   Min.   :-3.0000  \n FALSE:2         1st Qu.:-0.5000  \n TRUE :4         Median : 2.0000  \n                 Mean   : 0.6667  \n                 3rd Qu.: 2.5000  \n                 Max.   : 3.0000  \n                 NA's   :3        \n\nstr (DF)       # estrutura da base\n\n'data.frame':   6 obs. of  6 variables:\n $ var_character: chr  \"João\" \"Rute\" \"Pedro\" \"Filipa\" ...\n $ var_numeric  : num  2.5 3.5 6.5 -3.5 0 7.7\n $ var_integer  : num  2 3 6 -3 2 9\n $ var_factor   : Factor w/ 2 levels \"alto\",\"baixo\": 1 2 2 1 1 2\n $ var_log      : logi  TRUE TRUE TRUE FALSE FALSE TRUE\n $ var_integerNA: num  2 3 NA -3 NA NA\n\n\n\n\n\n\n\n\nDF\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nDF [1  ,6 ]         #  linha 1      , coluna 6\n\n[1] 2\n\nDF [1  , ]      # linha 1       , colunas todas\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n\nDF [ ,6 ]        # linhas todas, coluna 6\n\n[1]  2  3 NA -3 NA NA\n\nDF [1:5, ]  # linhas 1 a 5  , colunas todas\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n\nDF [ , 3:6]     # linhas todas  , colunas 3 a 6 \n\n  var_integer var_factor var_log var_integerNA\n1           2       alto    TRUE             2\n2           3      baixo    TRUE             3\n3           6      baixo    TRUE            NA\n4          -3       alto   FALSE            -3\n5           2       alto   FALSE            NA\n6           9      baixo    TRUE            NA\n\nDF [1:3,4:6]\n\n  var_factor var_log var_integerNA\n1       alto    TRUE             2\n2      baixo    TRUE             3\n3      baixo    TRUE            NA\n\nDF [c(1,2,3), c(4,5,6)]\n\n  var_factor var_log var_integerNA\n1       alto    TRUE             2\n2      baixo    TRUE             3\n3      baixo    TRUE            NA\n\nDF [  ,-c(1,2)]  # linhas todas, colunas todas menos 1 e 2\n\n  var_integer var_factor var_log var_integerNA\n1           2       alto    TRUE             2\n2           3      baixo    TRUE             3\n3           6      baixo    TRUE            NA\n4          -3       alto   FALSE            -3\n5           2       alto   FALSE            NA\n6           9      baixo    TRUE            NA\n\n\n\n\n\n\n\n\nplot (data1$gas19)\n\n\nhist (data1$gas19)\n\nboxplot (data1$gas19)\n\nbarplot(table (data1$exp19))"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#o-assignment-operator",
+    "href": "j3.1_linguagem.html#o-assignment-operator",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "O assignment operator (&lt;-) é a ferramenta chave para a criação de objetos R.\nExemplos de criação de variáveis:\n\nvar_numeric &lt;- c(2.5  ,3.5 ,6.5  , -3.5, 0 , 7.7) \n\nvar_integer &lt;- c(2    ,3    ,6   , -3,   2,   9)\n\nvar_factor &lt;- factor (c(\"alto\",\"baixo\",\"baixo\", \"alto\", \"alto\", \"baixo\"))\n\nvar_character &lt;- c(\"João\",\"Rute\",\"Pedro\", \"Filipa\", \"Ana\", \"Fatima\")\n\nvar_log &lt;- c(TRUE,TRUE,TRUE,FALSE,FALSE,TRUE)\n\nvar_integerNA &lt;- c(2    ,3    ,NA   , -3, NA, NA)\n\n\nExemplos de criação de uma dataframe:\n\nDF &lt;- data.frame (var_character,var_numeric,var_integer,var_factor,var_log,var_integerNA)"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#objectos-mais-frequentes",
+    "href": "j3.1_linguagem.html#objectos-mais-frequentes",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "Vectores numeric\n\nvar_numeric\n\n[1]  2.5  3.5  6.5 -3.5  0.0  7.7\n\n\n\nVectores integer\n\nvar_integer\n\n[1]  2  3  6 -3  2  9\n\n\n\nVectores factor\n\nvar_factor\n\n[1] alto  baixo baixo alto  alto  baixo\nLevels: alto baixo\n\n\n\nVectores character\n\nvar_character\n\n[1] \"João\"   \"Rute\"   \"Pedro\"  \"Filipa\" \"Ana\"    \"Fatima\"\n\n\n\nVectores lógico\n\nvar_log\n\n[1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE\n\n\n\n\n\n\n\nDF\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\n\n\n\n\n\n\ntable (var_factor)\n\nvar_factor\n alto baixo \n    3     3 \n\n\n\n\n\n\n\nplot (var_numeric)"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#operadores-aritméticos",
+    "href": "j3.1_linguagem.html#operadores-aritméticos",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "Operador\nDescrição\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^ or **\nexponentiation\n\n\nx %/% y\ninteger division 5%/%2 is 2"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#operadores-lógicos",
+    "href": "j3.1_linguagem.html#operadores-lógicos",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "Operador\nDescrição\n\n\n\n\n&lt;\nless than\n\n\n&lt;=\nless than or equal to\n\n\n&gt;\ngreater than\n\n\n&gt;=\ngreater than or equal to\n\n\n==\nexactly equal to\n\n\n!=\nnot equal to\n\n\n!x\nNot x\n\n\nx\ny\n\n\nx & y\nx E y\n\n\nis.na(x)\ntestar se x tem NAs\n\n\n%in%\n“a %in% c(a, b, c)”: Is a in the group c(a, b, c)?\n\n\n\n” %in% is the only operator that does not do normal element-wise execution. %in% tests whether the value(s) on the left side are in the vector on the right side.” (Ver Grolemund 2014: 81)"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#funções-básicas",
+    "href": "j3.1_linguagem.html#funções-básicas",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "c(): combinar ou concatenar\n\n\nc  (25  , 33  ,  30  , 42  ,  26  ,  28) \n\n[1] 25 33 30 42 26 28\n\n\n\n\nseq(): sequênciar\n\n\nseq (1,6)\n\n[1] 1 2 3 4 5 6\n\n\n\n\nrep(): replicar \n\n\nrep (2017, 6)    # replicar 2017 6 vezes     \n\n[1] 2017 2017 2017 2017 2017 2017\n\n\n\n\nOutras funções comuns\n\n\n\n\n\n\n\n\nFunção\nDescrição\n\n\n\n\nseq(from , to, by)\ngenerate a sequence\n\n\nrep(x, ntimes)\nrepeat x n times\n\n\ncut(x, n)\ndivide continuous variable in factor with n levels\n\n\nsort (x)\nordenar\n\n\nlength (x)\nextensão\n\n\n\ncbind(objeto1, objeto2, …) # combina objetos como colunas\nrbind(objeto1, objeto2, …) # combina objetos como linhas"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#funções-variáveis",
+    "href": "j3.1_linguagem.html#funções-variáveis",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "length(DF$var_numeric)\n\n[1] 6\n\nsum(DF$var_numeric)\n\n[1] 16.7\n\nmean (DF$var_numeric)\n\n[1] 2.783333\n\nmedian(DF$var_numeric)\n\n[1] 3\n\nsort  (DF$var_numeric)  \n\n[1] -3.5  0.0  2.5  3.5  6.5  7.7\n\ntable (DF$var_factor)\n\n\n alto baixo \n    3     3 \n\n\n\nclass (DF$var_numeric)\n\n[1] \"numeric\"\n\nclass (DF$var_integer)\n\n[1] \"numeric\"\n\nclass ( DF$var_factor)\n\n[1] \"factor\"\n\nclass ( DF$var_character)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "j3.1_linguagem.html#nas",
+    "href": "j3.1_linguagem.html#nas",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "is.na(DF$var_integerNA)\n\n[1] FALSE FALSE  TRUE FALSE  TRUE  TRUE\n\n!is.na(DF$var_integerNA)\n\n[1]  TRUE  TRUE FALSE  TRUE FALSE FALSE\n\n\n\ntable (is.na(DF$var_integerNA) )\n\n\nFALSE  TRUE \n    3     3 \n\ntable (DF$var_integerNA, exclude = FALSE)\n\n\n  -3    2    3 &lt;NA&gt; \n   1    1    1    3"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#parêntesis-rectos-variáveis",
+    "href": "j3.1_linguagem.html#parêntesis-rectos-variáveis",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "DF$var_num\n\n[1]  2.5  3.5  6.5 -3.5  0.0  7.7\n\nDF$var_num [1]   \n\n[1] 2.5\n\nDF$var_num [4]  \n\n[1] -3.5\n\nDF$var_num [1:3]\n\n[1] 2.5 3.5 6.5\n\nDF$var_num [2:5]\n\n[1]  3.5  6.5 -3.5  0.0\n\nDF$var_num [4:1]\n\n[1] -3.5  6.5  3.5  2.5\n\nDF$var_num [-1]      # indice negativo\n\n[1]  3.5  6.5 -3.5  0.0  7.7\n\nDF$var_num [20]  # fora do rango\n\n[1] NA"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#funções-bases",
+    "href": "j3.1_linguagem.html#funções-bases",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "class (DF)     # classe de objeto      \n\n[1] \"data.frame\"\n\nnrow (DF)    # numero de linhas  \n\n[1] 6\n\nncol (DF)    # numero de colunas  \n\n[1] 6\n\ndim(DF)      # dimensão (linhas & colunas)   \n\n[1] 6 6\n\nobject.size(DF) # tamanho em bytes\n\n2472 bytes\n\nnames (DF)  # nome das variáveis \n\n[1] \"var_character\" \"var_numeric\"   \"var_integer\"   \"var_factor\"   \n[5] \"var_log\"       \"var_integerNA\"\n\nhead (DF)    # Primeiras 6 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nhead (DF, 13)  # Primeiras 13 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\ntail (DF)      # últimas 6 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\ntail (DF, 10)    # últimas 10 observações da base\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nsummary(DF)     # sommario de cada variável da base\n\n var_character       var_numeric      var_integer     var_factor\n Length:6           Min.   :-3.500   Min.   :-3.000   alto :3   \n Class :character   1st Qu.: 0.625   1st Qu.: 2.000   baixo:3   \n Mode  :character   Median : 3.000   Median : 2.500             \n                    Mean   : 2.783   Mean   : 3.167             \n                    3rd Qu.: 5.750   3rd Qu.: 5.250             \n                    Max.   : 7.700   Max.   : 9.000             \n                                                                \n  var_log        var_integerNA    \n Mode :logical   Min.   :-3.0000  \n FALSE:2         1st Qu.:-0.5000  \n TRUE :4         Median : 2.0000  \n                 Mean   : 0.6667  \n                 3rd Qu.: 2.5000  \n                 Max.   : 3.0000  \n                 NA's   :3        \n\nstr (DF)       # estrutura da base\n\n'data.frame':   6 obs. of  6 variables:\n $ var_character: chr  \"João\" \"Rute\" \"Pedro\" \"Filipa\" ...\n $ var_numeric  : num  2.5 3.5 6.5 -3.5 0 7.7\n $ var_integer  : num  2 3 6 -3 2 9\n $ var_factor   : Factor w/ 2 levels \"alto\",\"baixo\": 1 2 2 1 1 2\n $ var_log      : logi  TRUE TRUE TRUE FALSE FALSE TRUE\n $ var_integerNA: num  2 3 NA -3 NA NA"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#parêntesis-bases",
+    "href": "j3.1_linguagem.html#parêntesis-bases",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "DF\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n6        Fatima         7.7           9      baixo    TRUE            NA\n\nDF [1  ,6 ]         #  linha 1      , coluna 6\n\n[1] 2\n\nDF [1  , ]      # linha 1       , colunas todas\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n\nDF [ ,6 ]        # linhas todas, coluna 6\n\n[1]  2  3 NA -3 NA NA\n\nDF [1:5, ]  # linhas 1 a 5  , colunas todas\n\n  var_character var_numeric var_integer var_factor var_log var_integerNA\n1          João         2.5           2       alto    TRUE             2\n2          Rute         3.5           3      baixo    TRUE             3\n3         Pedro         6.5           6      baixo    TRUE            NA\n4        Filipa        -3.5          -3       alto   FALSE            -3\n5           Ana         0.0           2       alto   FALSE            NA\n\nDF [ , 3:6]     # linhas todas  , colunas 3 a 6 \n\n  var_integer var_factor var_log var_integerNA\n1           2       alto    TRUE             2\n2           3      baixo    TRUE             3\n3           6      baixo    TRUE            NA\n4          -3       alto   FALSE            -3\n5           2       alto   FALSE            NA\n6           9      baixo    TRUE            NA\n\nDF [1:3,4:6]\n\n  var_factor var_log var_integerNA\n1       alto    TRUE             2\n2      baixo    TRUE             3\n3      baixo    TRUE            NA\n\nDF [c(1,2,3), c(4,5,6)]\n\n  var_factor var_log var_integerNA\n1       alto    TRUE             2\n2      baixo    TRUE             3\n3      baixo    TRUE            NA\n\nDF [  ,-c(1,2)]  # linhas todas, colunas todas menos 1 e 2\n\n  var_integer var_factor var_log var_integerNA\n1           2       alto    TRUE             2\n2           3      baixo    TRUE             3\n3           6      baixo    TRUE            NA\n4          -3       alto   FALSE            -3\n5           2       alto   FALSE            NA\n6           9      baixo    TRUE            NA"
+  },
+  {
+    "objectID": "j3.1_linguagem.html#gráficos",
+    "href": "j3.1_linguagem.html#gráficos",
+    "title": "LINGUAGEM",
+    "section": "",
+    "text": "plot (data1$gas19)\n\n\nhist (data1$gas19)\n\nboxplot (data1$gas19)\n\nbarplot(table (data1$exp19))"
+  },
+  {
+    "objectID": "j3.0.1_pacotes.html",
+    "href": "j3.0.1_pacotes.html",
+    "title": "Pacotes",
+    "section": "",
+    "text": "Aceder ao sítio cran.r-project.org\n\nClicar em\n\nDownload R for macOS or\n\nDescarregue a versão mais recente da GUI do R em (ficheiro .pkg) em “Latest release”. Pode descarregar versões muito mais antigas seguindo as ligações “old directory” ou “CRAN archive”.\nExecute o ficheiro .pkg e siga as instruções de instalação.\n\nDownload R for Windows\n\nClicar na ligação “install R for the first time” para transferir o ficheiro executável (.exe) do R.\nExecute o ficheiro executável do R para iniciar a instalação e permita que a aplicação faça alterações no seu dispositivo.\nSeleccione o idioma de instalação.\nSiga as instruções de instalação.\n\n\n\n\n\n\n\n\n\nAceder ao sitio do RStudio.\nClicar em “DOWNLOAD” no canto superior direito.\nClicar em “DOWNLOAD” sob a “RStudio Free Source License”.\nDescarregar o RStudio Desktop recomendado para o seu computador.\nExecute\n\no ficheiro RStudio Executable (.exe) para Windows ou\no ficheiro Apple Image Disk (.dmg) para macOS X."
+  },
+  {
+    "objectID": "j3.0.1_pacotes.html#instalação-do-r",
+    "href": "j3.0.1_pacotes.html#instalação-do-r",
+    "title": "Pacotes",
+    "section": "",
+    "text": "Aceder ao sítio cran.r-project.org\n\nClicar em\n\nDownload R for macOS or\n\nDescarregue a versão mais recente da GUI do R em (ficheiro .pkg) em “Latest release”. Pode descarregar versões muito mais antigas seguindo as ligações “old directory” ou “CRAN archive”.\nExecute o ficheiro .pkg e siga as instruções de instalação.\n\nDownload R for Windows\n\nClicar na ligação “install R for the first time” para transferir o ficheiro executável (.exe) do R.\nExecute o ficheiro executável do R para iniciar a instalação e permita que a aplicação faça alterações no seu dispositivo.\nSeleccione o idioma de instalação.\nSiga as instruções de instalação."
+  },
+  {
+    "objectID": "j3.0.1_pacotes.html#instalação-do-r.studio",
+    "href": "j3.0.1_pacotes.html#instalação-do-r.studio",
+    "title": "Pacotes",
+    "section": "",
+    "text": "Aceder ao sitio do RStudio.\nClicar em “DOWNLOAD” no canto superior direito.\nClicar em “DOWNLOAD” sob a “RStudio Free Source License”.\nDescarregar o RStudio Desktop recomendado para o seu computador.\nExecute\n\no ficheiro RStudio Executable (.exe) para Windows ou\no ficheiro Apple Image Disk (.dmg) para macOS X."
+  },
+  {
+    "objectID": "FalandoR - cópia.html#ilustração-da-sintaxe-básica",
+    "href": "FalandoR - cópia.html#ilustração-da-sintaxe-básica",
+    "title": "Falando R",
+    "section": "Ilustração da Sintaxe Básica",
+    "text": "Ilustração da Sintaxe Básica"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#estrutura-completa-de-uma-f",
+    "href": "FalandoR - cópia.html#estrutura-completa-de-uma-f",
+    "title": "Falando R",
+    "section": "Estrutura completa de uma f()",
+    "text": "Estrutura completa de uma f()\n\n\nseq(from = 1, to = 6, by = 1)  # 3 parameters\n\n\n\nmantendo as posições dos parâmetros…\n\n\n\n\nseq (1,6)\n\n[1] 1 2 3 4 5 6\n\n\n\n\nmais se mudarmos de posições …\n\n\n\n\nseq( to = 6, by = 1, from = 1)\n\n[1] 1 2 3 4 5 6\n\n\n\n\n\n? seq"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#vectores-numéricos",
+    "href": "FalandoR - cópia.html#vectores-numéricos",
+    "title": "Falando R",
+    "section": "Vectores numéricos",
+    "text": "Vectores numéricos\nCriação de objecto “gas19”:\n\na: controlo da sintaxe\n\n\n\nc  (25  , 33  ,  30  , 42  ,  26  ,  28) \n\n[1] 25 33 30 42 26 28\n\n\n\n\n\nb: executar\n\n\n\n\ngas19   &lt;-c  (25,33,30,42,26,28)\n\n\nc: controlar novo objecto:\n\n\n\n\ngas19\n\n[1] 25 33 30 42 26 28"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#calculating-over-numerics",
+    "href": "FalandoR - cópia.html#calculating-over-numerics",
+    "title": "Falando R",
+    "section": "Calculating over numerics",
+    "text": "Calculating over numerics\n\n\nmean (data1$gas19)\n\n[1] 30.66667\n\n\n\n\n\n\nmean (data1$gas20)\n\n[1] 35.66667\n\n\n\n\n\n\nmean (data1$gas21)\n\n[1] NA"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#recodificar-variáveis",
+    "href": "FalandoR - cópia.html#recodificar-variáveis",
+    "title": "Falando R",
+    "section": "Recodificar variáveis",
+    "text": "Recodificar variáveis\n\nComo ler isto? \n\n\n\n\nifelse (data1$gas19 &gt;30 ,      c (1), c(0) )\n\n\n\n\nCriar uma “dummy” a partir de gas19 (mais/menos 30)."
+  },
+  {
+    "objectID": "FalandoR - cópia.html#tarefa-explorar",
+    "href": "FalandoR - cópia.html#tarefa-explorar",
+    "title": "Falando R",
+    "section": "TAREFA: Explorar",
+    "text": "TAREFA: Explorar\n?plot\n\numa forma de explorar: copiar/colar um exemplo:\n\n\nplot(x &lt;- sort(rnorm(47)), type = \"s\", main = \"plot(x, type = \\\"s\\\")\")\n\npoints(x, cex = .5, col = \"dark red\")"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#distribuição-normal",
+    "href": "FalandoR - cópia.html#distribuição-normal",
+    "title": "Falando R",
+    "section": "Distribuição Normal",
+    "text": "Distribuição Normal\n\n\n\nrnorm (10)   # standard normal dist.(mean=0,st.dev=1), 10 n \n\n\n\n [1]  0.9257623  0.7868737 -0.5520654 -0.1131205  2.4497436  1.3360617\n [7]  0.2655284 -0.4973855  0.4638945  0.8734439\n\n\n\n\n\n\nrnorm (10, 100, 25) # normal dist.with m=100,std=25)\n\n\n\n [1]  64.03700 110.78884  42.97531 163.73981  78.50417  97.21035  67.51370\n [8] 107.75576  89.67726 156.45985"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#moeda",
+    "href": "FalandoR - cópia.html#moeda",
+    "title": "Falando R",
+    "section": "moeda",
+    "text": "moeda\n\n\nsample (0:1, 10, replace=T)\n\n [1] 0 1 1 1 1 1 0 1 1 1\n\n\n\nsample (c(0,1), 100, replace=TRUE) \n\n  [1] 0 0 1 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 1 1 0 1 1 1 0 0 1 1 1 0 1 0 1 1 0 0 1\n [38] 0 1 1 1 0 1 0 0 0 0 0 1 1 0 1 1 0 1 0 0 1 0 1 1 1 1 1 1 0 0 0 0 0 1 0 0 1\n [75] 0 0 0 1 0 1 1 1 0 0 0 1 1 0 1 1 1 0 1 1 0 0 0 0 0 0"
+  },
+  {
+    "objectID": "FalandoR - cópia.html#dado-1",
+    "href": "FalandoR - cópia.html#dado-1",
+    "title": "Falando R",
+    "section": "dado: 1",
+    "text": "dado: 1\n\nsample (1:6, 4, replace=TRUE) \n\n[1] 6 2 3 4\n\n\n\n\n\nsample (1:6, 4, replace=TRUE) \n\n[1] 6 6 2 1\n\n\n\n\n\n\nsample (1:6, 4, replace=TRUE) \n\n[1] 5 5 5 4\n\n\n\n\n\n\nsample (1:6, 4, replace=TRUE) \n\n[1] 4 5 5 1\n\n\n\n\n\nmoeda &lt;- sample (c(0,1), 100, replace=TRUE, prob=c(0.3, 0.7)) \n\n\nmoeda\n\n  [1] 1 1 1 0 1 0 1 0 1 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 1 0 1 0 1 1 1 0 1\n [38] 1 1 1 0 0 1 0 0 1 1 1 0 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 0 1 0 1 0 1 1 1 0 1\n [75] 1 1 1 1 0 1 1 0 1 0 1 1 1 1 0 1 1 1 1 1 0 1 1 1 0 1"
+  }
+]
