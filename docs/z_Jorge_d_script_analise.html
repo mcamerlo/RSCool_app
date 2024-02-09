@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R-SCool - Análise Dados Artigos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">R-SCool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target=""><i class="bi bi-balloon" role="img">
+</i> 
+ <span class="menu-text">.</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-iniciando" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Iniciando</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-iniciando">    
+        <li>
+    <a class="dropdown-item" href="./j3.0.1_pacotes.html" rel="" target="">
+ <span class="dropdown-text">Pacotes basicos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.0.2_glossario.html" rel="" target="">
+ <span class="dropdown-text">Glossario</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.0.3_boaspraticas.html" rel="" target="">
+ <span class="dropdown-text">Boas práticas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.0.4_resources.html" rel="" target="">
+ <span class="dropdown-text">Recursos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target=""><i class="bi bi-bandaid" role="img">
+</i> 
+ <span class="menu-text">.</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./j3.1_linguagem.html" rel="" target="">
+ <span class="menu-text">Linguagem</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gestão" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Gestão</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-gestão">    
+        <li>
+    <a class="dropdown-item" href="./j3.2_workspace.html" rel="" target="">
+ <span class="dropdown-text">Workspace</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./j3.3_vectors.html" rel="" target="">
+ <span class="dropdown-text">Vectors</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./j3.4_dataframes.html" rel="" target="">
+ <span class="dropdown-text">Dataframes</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./j3.4_tidyverse.html" rel="" target="">
+ <span class="dropdown-text">Tidyverse</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./j3.4_QUARTO_doc.html" rel="" target="">
+ <span class="dropdown-text">Quarto (Documento)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análise" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Análise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-análise">    
+        <li>
+    <a class="dropdown-item" href="./j3.5_estatística1_tools.html" rel="" target="">
+ <span class="dropdown-text">Estatística Descritiva</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.5_GRAFICOS.html" rel="" target="">
+ <span class="dropdown-text">Gráficos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.6_testes_tool.html" rel="" target="">
+ <span class="dropdown-text">Teste</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./j3.7_simulations.html" rel="" target="">
+ <span class="dropdown-text">Simulations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target=""><i class="bi bi-balloon" role="img">
+</i> 
+ <span class="menu-text">.</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projectos-govcopp" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Projectos GOVCOPP</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projectos-govcopp">    
+        <li>
+    <a class="dropdown-item" href="./z_Ana.html" rel="" target="">
+ <span class="dropdown-text">Ana</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./z_AnaCatarina.html" rel="" target="">
+ <span class="dropdown-text">Ana Catarina</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./z_nuno.html" rel="" target="">
+ <span class="dropdown-text">Nuno</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./z_Jorge_d_script_analise.html" rel="" target="">
+ <span class="dropdown-text">Jorge</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./z_Maria.html" rel="" target="">
+ <span class="dropdown-text">Maria</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#resumo" id="toc-resumo" class="nav-link active" data-scroll-target="#resumo">Resumo</a></li>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a>
+  <ul class="collapse">
+  <li><a href="#caraterização-dos-dado-analisados" id="toc-caraterização-dos-dado-analisados" class="nav-link" data-scroll-target="#caraterização-dos-dado-analisados"><span class="header-section-number">1.0.1</span> Caraterização dos dado analisados</a></li>
+  </ul></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">2</span> Conclusão</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análise Dados Artigos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="resumo" class="level1 unnumbered">
+<h1 class="unnumbered">Resumo</h1>
+<p>O presente trabalho analisa os artigos científicos publicados nas revistas académicas portuguesas da área do turismo entre 2004 e 2019. Através de uma abordagem bibliométrica descritiva, examinam-se as caraterísticas de cada título, a sua evolução e o respetivo perfil autoral. Os resultados obtidos indiciam a existência de projetos editoriais relativamente distintos e o predomínio das proximidades linguística e geográfica em termos de representação nacional.</p>
+<p><strong>Palavra-chave</strong> Turismo, Investigação, Revista científica, Portugal</p>
+</section>
+<section id="introdução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
+<p>Vocacionadas primordialmente para a produção, disseminação e intercâmbio de resultados de investigação teórica e aplicada - convencionalmente sustentadas num rigoroso processo anónimo de aferição prévia da qualidade - as revistas científicas (journals) desempenham um papel crucial no progresso cumulativo da Ciência. Da sua análise é possível conhecer e compreender caraterísticas, extensão (incluindo lacunas) e progressão aos níveis: i) individual de cada revista (meso); ii) da disciplina ou campo de estudos como um todo (meta); ou ainda iii) a uma escala micro, dos autores e respetivas organizações de filiação (Hall, 2005). Neste sentido, a sua evolução reflete o desenvolvimento de toda uma comunidade académica (Strandberg, Nath, Hemmatdar, &amp; Jahwash, 2018).</p>
+<p>Concomitantemente com o crescimento praticamente incessante do turismo (e subsequente saliência económica), nas últimas décadas assistiu-se à expansão da formação especializada (vocacional ou de grau superior) nesta área e ao desenvolvimento de um campo de estudos e investigação dedicado (Jogaratnam, Chon, McCleary, Mena, &amp; Yoo, 2005). A par de numerosos eventos e organizações especializados, a proliferação da publicação académica, nomeadamente a periódica, testemunha-o: de apenas cinco títulos em 1980, em 1999 somava já 50 (Weiler, 2001), ascendendo a 240 em 2014 (Hunt, Gao, &amp; Xue, 2014); estimativas mais recentes apontam para cerca de 390 títulos ativos em todo o mundo no domínio conjunto do turismo, hospitalidade e eventos (McKercher, 2020). Uma tal vitalidade - reconhece Butler (2015) - constitui um desafio à capacidade dos investigadores acompanharem a pesquisa mais recente, a que acresce uma crónica subrepresentação daqueles títulos nos serviços de indexação bibliográfica académica (McKercher, 2008), apenas remediada com estudos endógenos parcelares.</p>
+<p>Em Portugal, a publicação de revistas académicas sobre turismo iniciou-se em 2004, contando presentemente com quatro títulos. Contudo, passados 16 anos estes periódicos permanecem maioritariamente por analisar quanto às suas caraterísticas, evolução e produtividade - lacuna que o presente estudo visa colmatar.</p>
+<p>Neste sentido, o presente trabalho prossegue com um enquadramento à publicação periódica na área do turismo (secção 2), sumariando as principais análises anteriores. A secção seguinte (3) descreve o desenho e a realização do estudo empírico, continuando com a apresentação dos resultados obtidos (secção 4). Por fim, na secção 5 reflete-se sobre aqueles resultados e perspetivam-se as respetivas limitações, antecipando-se igualmente possíveis direções futuras para o desenvolvimento de estudos deste género. # Metodologia # Resultados</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Artigos_Turismo" "has_annotations"</code></pre>
+</div>
+</div>
+<section id="caraterização-dos-dado-analisados" class="level3" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="caraterização-dos-dado-analisados"><span class="header-section-number">1.0.1</span> Caraterização dos dado analisados</h3>
+<p>A partir do ficheiro-fonte dados analisaram-se 18 variáveis com a seguinte caraterização:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  #ID_Artigo        Validade         Revista              Ano           
+ Length:1391        Mode:logical   Length:1391        Length:1391       
+ Class :character   TRUE:1391      Class :character   Class :character  
+ Mode  :character                  Mode  :character   Mode  :character  
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+      Vol              Nº               Vol+#           #Especial      
+ Min.   : 1.000   Length:1391        Length:1391        Mode :logical  
+ 1st Qu.: 1.000   Class :character   Class :character   FALSE:778      
+ Median : 3.000   Mode  :character   Mode  :character   TRUE :613      
+ Mean   : 4.603                                                        
+ 3rd Qu.: 7.000                                                        
+ Max.   :15.000                                                        
+ NA's   :292                                                           
+      pp_I             pp_F           Título            Keywords        
+ Min.   :   1.0   Min.   :   8.0   Length:1391        Length:1391       
+ 1st Qu.:  50.0   1st Qu.:  63.0   Class :character   Class :character  
+ Median : 111.0   Median : 126.0   Mode  :character   Mode  :character  
+ Mean   : 342.5   Mean   : 355.6                                        
+ 3rd Qu.: 363.0   3rd Qu.: 374.0                                        
+ Max.   :2345.0   Max.   :2352.0                                        
+                                                                        
+    Idioma               pp's            #autores      Colaboração       
+ Length:1391        Min.   :   3.00   Min.   : 1.000   Length:1391       
+ Class :character   1st Qu.:  10.00   1st Qu.: 2.000   Class :character  
+ Mode  :character   Median :  12.00   Median : 2.000   Mode  :character  
+                    Mean   :  14.08   Mean   : 2.339                     
+                    3rd Qu.:  15.00   3rd Qu.: 3.000                     
+                    Max.   :1007.00   Max.   :18.000                     
+                                                                         
+    Âmbito          Participação      
+ Length:1391        Length:1391       
+ Class :character   Class :character  
+ Mode  :character   Mode  :character  
+                                      
+                                      
+                                      
+                                      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="z_Jorge_d_script_analise_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Interorganizacional Intraorganizacional           Monoautor 
+                503                 549                 331 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="z_Jorge_d_script_analise_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="z_Jorge_d_script_analise_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="z_Jorge_d_script_analise_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusão" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conclusão</h1>
+<p>A principal contribuição do presente trabalho decorre da análise conjunta da publicação das revistas científicas periódicas portuguesas sobre turismo, estendendo a pesquisa similar existente (atrás mencionada) além dos habituais títulos internacionais mais influuentes e num contexto não-anglófono. Pese embora a sua reduzida expressão, o aparecimento daquelas revistas representou não só um acréscimo do potencial de publicação Portuguesa na área (até então restringida à publicação noutros domínios disciplinares ou em publicações estrangeiras), mas também um marco no desenvolvimento da investigação e ensino neste subdomínio do conhecimento.</p>
+<p>Os resultados agora obtidos permitem tecer comparações quer com as referências aludidas no enquadramento, quer entre os títulos analisados. Por um lado, as prevalências da autoria académica, dos artigos multiautorados e das contribuições isoladas reafirmam os resultados dos estudos internacionais mencionados, ao mesmo tempo que evidenciam a polarização da produção num conjunto restrito de nacionalidades, organizações (académicas) e, em menor grau, dos autores mais prolíficos. As disparidades entre os títulos, por seu turno, manifestam-se a múltiplos níveis: enquanto a RT&amp;D é o título que contabiliza mais artigos publicados, mais organizações representadas, um maior número de autores (nomeadamente, dos filiados em organizações portuguesas) e onde a colaboração interinstitucional (em particular, internacional) é mais expressiva, o EJTH&amp;R é o que publica a maior proporção de artigos monoautorados, de artigos autorados por indivíduos filiados em organizações de outras nacionalidades (i.e., não portuguesas, brasileiras ou espanholas) e onde estão representadas mais nacionalidades, sendo igualmente o único a publicar exclusivamente em inglês. Complementarmente, T&amp;HIJ e na T&amp;MS denotam um maior protagonismo de textos em espanhol, verificando-se um decréscimo global do portugu ês face ao inglês.</p>
+<p>Pese embora a maior expressão da autoria filiada em organizações portuguesas no total de artigos ou de autores, não se reconhece aí qualquer hegemonia, atendendo à representação das organizações brasileiras, por exemplo. Não obstante, a concentração da produtividade em apenas três nacionalidades mais representadas - correspondendo a cerca de quatro quintos dos artigos e autores, e mais de metade das organizações - sugere um efeito de proximidade a dois níveis distintos: uma proximidade linguística no que ser refere aos autores ‘brasileiros’ e outra geográfica, relativamente aos ‘espanhóis’. Complementarmente, o perfil colaborativo aponta para uma maior prevalência da colaboração interorganizacional entre ‘brasileiros’, intraorganizacional para ‘espanhóis’ ou monoautorada para os restantes países, sendo os ‘portugueses’ os menos internacionais. O exame de ambas as situações, contudo, reside além do âmbito do presente estudo.</p>
+<p>Com base nos resultados apresentados, afigura-se legítimo refletir sobre a viabilidade dos quatro projetos editoriais num contexto académico como o português: a aparente interrupção (ainda que momentânea) da publicação dos dois títulos mais recentes - coincidentemente aqueles sedeados em instituições de ensino politécnico e com uma orientação mais focalizada na hospitalidade - assim o justifica. Entre outras, as possibilidades podem contemplar a reorientação do posicionamento editorial (agregando uma nova disposição disciplinar, temática ou até geográfica), a fusão de títulos ou o estabelecimento de parcerias (nacionais ou internacionais) com instituições que assegurem a sua viabilidade.</p>
+<p>Uma pesquisa como a presente não é, naturalmente, isenta de limitações: circunscrevendo-se às publicações indicadas, os seus resultados não deverão ser tomados como representativos da produtividade quer de indivíduos, quer de instituições, nomeadamente aqueles portugueses. Desde logo porque a atividade de investigação e publicação sobre turismo não se limita ao país, nem sequer à publicação periódica ou aquela explicitamente dedicada ao turismo. Por outro lado, porque englobam também a contribuição de autores não-nacionais radicados ou que temporariamente desenvolveram a sua atividade (e.g., estudos pós-graduados) no país. Quanto ao pendor marcadamente descritivo e não-teorizante do estudo, ele deriva do seu propósito fundacional, centrado no levantamento e análise das características globais da publicação considerada, a ser colmatado em estudos subsequentes.</p>
+<p>Procurando ser um ponto de partida, antevê- se a possibilidade de complementação do presente trabalho com estudos comparativos das realidades espanhola e brasileira, na lógica de proximidade aludida anteriormente. Por outro lado, o seu aprofundamento poderá passar pelo exame do seu impacto (ex. citações), dos temas e caraterísticas bibliométricas (ex. palavras-chave), metodologias ou estruturas sociais inerentes. Ainda assim, um retrato mais completo da investigação portuguesa sobre turismo necessitará de examinar não só outras modalidades da publicação científica na área (publicação de livros; autoria em títulos estrangeiros ou não específicos sobre turismo; editoração; etc.) como outras vertentes de produção científica (graus e teses académicos; unidades de investigação; projetos; consultadoria; financiamento científico; eventos académicos; etc.).</p>
+<section id="agradecimentos" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="agradecimentos">Agradecimentos</h5>
+<p>Agradece-se à Dr.ª Ilda Lopes (Escola Superior de Turismo e Tecnologia do Mar, Instituto Politécnico de Leiria) todo o apoio prestado na obtenção da informação bibliográfica de artigos do EJTH&amp;R.</p>
+</section>
+</section>
+<section id="referências" class="level1 unnumbered">
+<h1 class="unnumbered">Referências</h1>
+<ol type="1">
+<li><p>Ballantyne, R., Packer, J., &amp; Axelsen, M. (2009). Trends in tourism research. <em>Annals of Tourism Research</em>, 36(1), 149-152.</p></li>
+<li><p>Benckendorff, P. (2009). Themes and Trends in Australian and New Zealand Tourism Research: A Social Network Analysis of Citations in Two Leading Journals (1994-2007). <em>Journal of Hospitality and Tourism Management</em>, 16(1), 1-15.</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
